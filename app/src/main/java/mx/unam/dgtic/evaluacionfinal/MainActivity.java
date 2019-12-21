@@ -14,25 +14,20 @@ import mx.unam.dgtic.evaluacionfinal.modelo.Alimentos;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    String[] grupos = {"CEREALES","VERDURAS","FRUTAS","ALIMENTOS DE ORIGEN ANIMAL","LECHE ENTERA",
-            "LEGUMINOSAS","AZUCAR","GRASA MONOSATURADA","GRASA TRANS","LIBRES"} ;
-    String[]  energia = {"70 kcal","25 kcal","60 kcal","40 kcal","150 kcal","120 kcal","40 kcal","70 kcal","45 kcal","0 kcal"};
+    ArrayList<Alimentos> alimentos = new ArrayList<>();
+    ListView lv;
+    String[] grupos = {"CEREALES","VERDURAS","FRUTAS","ALIMENTOS DE ORIGEN ANIMAL","LECHE ENTERA", "LEGUMINOSAS","AZUCAR","GRASA MONOSATURADA","GRASA TRANS","LIBRES"} ;
+    String[] energia = {"70 kcal","25 kcal","60 kcal","40 kcal","150 kcal","120 kcal","40 kcal","70 kcal","45 kcal","0 kcal"};
     String[] carbohidratos = {"15g","4g","15g","0g","12g","20g","10g","3g","0g","0g"};
     String[] grasa = {"0g","0g","0g","1g","8g","1g","0g","5g","5g","0g"};
-    String[] proteina = {"2g","2g","0g","7g","9g","8g","0g","3g","0g","0g"} ;
-    String[] imgProd = {"1.PNG","2.PNG","3.PNG","4.PNG","5.PNG","6.PNG","7.PNG","8.PNG","9.PNG","10.PNG"};
-
-    ArrayList<Alimentos> alimentos = new ArrayList<>();
-
-    ListView lv;
+    String[] proteina = {"2g","2g","0g","7g","9g","8g","0g","3g","0g","0g"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        alimentos = datosProd();
+        alimentos = Food();
         final Adaptador adaptador = new Adaptador(this,alimentos);
 
         lv = findViewById(R.id.lv);
@@ -61,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<Alimentos> datosProd(){
+    private ArrayList<Alimentos> Food(){
         ArrayList<Alimentos> nuevos = new ArrayList<>();
         Alimentos alim;
         for (int i = 0;i<10;i++){
